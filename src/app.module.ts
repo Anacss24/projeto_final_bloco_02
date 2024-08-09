@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Category } from './Category/entities/category.entity';
+import { CategoryModule } from './Category/category.module';
+
 
 @Module({
   imports: [
@@ -12,10 +15,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'root',
       database: 'db_farmacia',
-      entities: [],
+      entities: [Category],
       synchronize: true,
     
-    })
+    }),
+    CategoryModule,
   ],
   controllers: [],
   providers: [],
